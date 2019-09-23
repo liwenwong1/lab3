@@ -1,0 +1,100 @@
+/* main JS file */
+let cityName=[];
+
+var svg = d3.select("body").append("svg")
+    .attr("x", 700)         // position the left of the rectangle
+    .attr("y", 550)    
+    .attr("width", 1200)
+    
+    // .attr("margin-left",100)
+    .attr("height", 700)
+   // .style("border", "1px solid black");
+
+   
+
+
+d3.csv("../data/cities.csv", function(city){
+    // console.log(city)
+    if(city.eu==='true'){
+        // console.log(city)
+        // cityName.push(city.city)
+        d3.select("body").append("p").text(city.city)
+        return {
+            city : city.city,
+            population : +city.population,
+            x : +city.x,
+            y: +city.y
+            
+          };
+    }
+}).then(function(data) {
+
+
+        svg.selectAll("circle")
+            .data(data)
+            .enter()
+            .append("circle")
+        //    .style("stroke", "black") 
+            .attr("fill",  "pink")
+            .attr("cx", function(x,y){ return x.x})
+            .attr("cy", function(x,y){return x.y})
+            .attr("r", function(x,y){
+                if(x.population<1000000){
+                    return 4
+                }else{
+                    return 8
+                }
+            })
+            .append('text')
+            .attr("dx", function(d){return 20})
+            .text(function(d){return d.city})
+        
+            ;
+
+            svg.selectAll("text")
+                .data(data)
+                .enter()
+                .append("text");
+                e.target.classList.add('city-label', function(d){
+                    if(x.population>1000000){
+                        return
+                    }
+                });
+                
+            
+            
+
+
+
+
+
+            var textlabels = text
+                            
+                            .attr("font-family", "sans-serif")
+                            .attr("font-size", "20px")
+                            .attr("fill", "black")
+                            .attr("city-label", function(d){
+
+                            }
+                            )
+                            .text( function (d) { 
+                                if(x.population>1000000){
+                                    return cityName
+                                }
+                                
+                                else{
+                                    return opacity
+                                }
+
+                          
+                                
+                            })
+                            
+                        
+                        
+                      
+
+console.log(cityName)
+
+                    
+                        })
