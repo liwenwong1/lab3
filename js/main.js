@@ -10,7 +10,7 @@ var svg = d3.select("body").append("svg")
     .attr("height", 700)
    // .style("border", "1px solid black");
 
-   
+
 
 
 d3.csv("../data/cities.csv", function(city){
@@ -18,7 +18,7 @@ d3.csv("../data/cities.csv", function(city){
     if(city.eu==='true'){
         // console.log(city)
         // cityName.push(city.city)
-        d3.select("body").append("p").text(city.city)
+       
         return {
             city : city.city,
             population : +city.population,
@@ -29,7 +29,7 @@ d3.csv("../data/cities.csv", function(city){
     }
 }).then(function(data) {
 
-
+    d3.select("body").append("p").text(`There are ${data.length} Countries in the EU`)
         svg.selectAll("circle")
             .data(data)
             .enter()
@@ -45,21 +45,23 @@ d3.csv("../data/cities.csv", function(city){
                     return 8
                 }
             })
-            .append('text')
-            .attr("dx", function(d){return 20})
-            .text(function(d){return d.city})
-        
             ;
 
             svg.selectAll("text")
                 .data(data)
                 .enter()
-                .append("text");
-                e.target.classList.add('city-label', function(d){
-                    if(x.population>1000000){
-                        return
+                .append("text")
+                .attr("x", function(d){return d.x})
+                .attr("y", function(d){return d.y})
+                .text(function(d){
+                    if(d.population>=1000000){
+                        return d.city
+                    }else{
+                        return " "
                     }
-                });
+                })
+                
+                ;
                 
             
             
