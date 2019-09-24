@@ -13,7 +13,7 @@ var svg = d3.select("body").append("svg")
 
 
 
-d3.csv("data/cities.csv", function(city){
+d3.csv("./data/cities.csv", function(city){
     // console.log(city)
     if(city.eu==='true'){
         // console.log(city)
