@@ -70,27 +70,7 @@ d3.csv("./data/cities.csv", function(city){
 
 
 
-            var textlabels = text
-                            
-                            .attr("font-family", "sans-serif")
-                            .attr("font-size", "20px")
-                            .attr("fill", "black")
-                            .attr("city-label", function(d){
-
-                            }
-                            )
-                            .text( function (d) { 
-                                if(x.population>1000000){
-                                    return cityName
-                                }
-                                
-                                else{
-                                    return opacity
-                                }
-
-                          
-                                
-                            })
+        
                             
                         
                         
